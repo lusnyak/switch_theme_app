@@ -14,22 +14,33 @@ class HomePage extends StatelessWidget {
         title: const Text(strings.home),
       ),
       body: SafeArea(
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                themeProvider.message,
-                style: const TextStyle(fontSize: 40.0),
+        maintainBottomViewPadding: true,
+        child: Column(
+          children: [
+            Expanded(
+              child: Center(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      themeProvider.message,
+                      style: const TextStyle(fontSize: 40.0),
+                    ),
+                    const SizedBox(height: 24.0),
+                    Icon(
+                      themeProvider.symbol,
+                      size: 80.0,
+                    )
+                  ],
+                ),
               ),
-              const SizedBox(height: 24.0),
-              Icon(
-                themeProvider.symbol,
-                size: 80.0,
-              )
-            ],
-          ),
+            ),
+            Text(
+              themeProvider.lastRecord!.toIso8601String(),
+              textAlign: TextAlign.center,
+            )
+          ],
         ),
       ),
     );

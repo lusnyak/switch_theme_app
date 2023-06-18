@@ -10,7 +10,7 @@ class ThemeProvider extends ChangeNotifier {
   }
 
   final List<LogThemeModel> _logRecords = <LogThemeModel>[];
-  List<LogThemeModel> get logRecords => _logRecords;
+  List<LogThemeModel> get logRecords => _logRecords.reversed.toList();
 
   ThemeMode? _themeMode;
   ThemeMode? get themeMode => _themeMode;
@@ -21,6 +21,8 @@ class ThemeProvider extends ChangeNotifier {
 
   String get message => _themeMode == lightMode ? strings.helloWorld : strings.byeWorld;
   IconData get symbol => _themeMode == lightMode ? Icons.wb_sunny_rounded : Icons.nightlight_round ;
+
+  DateTime? get lastRecord => _logRecords.isNotEmpty ? _logRecords.last.dateTime : null;
 
   toggleThemeMode(ThemeMode? value) {
     if (value != null) {

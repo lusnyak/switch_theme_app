@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:switch_theme_app/src/model/log_theme_model.dart';
 import 'package:switch_theme_app/src/presentation/providers/theme_provider.dart';
 import 'package:switch_theme_app/src/utils/routes.dart';
 import 'package:switch_theme_app/src/utils/strings.dart' as strings;
@@ -46,8 +47,9 @@ class StartPage extends StatelessWidget {
       itemBuilder: (context, index) {
         final record = themeChange.logRecords[index];
         return ListTile(
-          title: Text(record.mode.name),
+          title: Text(record.mode.message),
           subtitle: Text(record.dateTime.toString()),
+          trailing: Text(record.mode.name),
         );
       },
       separatorBuilder: (context, index) {
